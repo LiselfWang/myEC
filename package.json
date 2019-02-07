@@ -1,0 +1,22 @@
+{
+  "name": "myec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiselfWang/myEC.git"
+  },
+  "author": "Liself",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiselfWang/myEC/issues"
+  },
+  "homepage": "https://github.com/LiselfWang/myEC#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
