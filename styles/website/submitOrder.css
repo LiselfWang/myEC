@@ -1,0 +1,63 @@
+#myWebsite{
+    margin: 0 auto;
+    text-align: center;
+    width: 1440px;
+}
+
+#border{
+    width: 800px;
+    height: 150px;
+    padding: 20px;
+    border: silver 1px dashed;
+    margin: 10px auto;
+    text-align: left;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+#checkboxBorder{
+    line-height: 100px;
+    vertical-align: middle;
+}
+
+#pay{
+    font-size: 18px;
+}
+
+#money{
+    font-size: 22px;
+    color: tomato;
+    font-weight: bold
+}
+
+.payMoney{
+    margin: 0 auto;
+    width: 800px;
+    text-align: right;
+    height: 50px;
+    background-color:silver
+}
+
+#button{
+    width: 100px;
+    height: 50px;
+    background-color: tomato;
+    color: antiquewhite;
+    font-size: 20px;
+}
+.userborder{
+    padding: 10px;
+    border:silver 1px solid;
+    text-align: left;
+    margin: 10px auto;
+    width: 800px;
+}
+
+textarea{
+    width: 800px;
+    font-size: 14px;
+    color: silver;
+}
