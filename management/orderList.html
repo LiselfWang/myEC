@@ -7,10 +7,81 @@
   <title>Document</title>
   <link rel="stylesheet" href="/styles/management/orderList.css">
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-  
-
+    <fieldset>
+    <legend><b>Order List</b></legend>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Order Number</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User Phone</th>
+            <th scope="col">User Address</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">001</th>
+            <td>王俐力</td>
+            <td>18091185557</td>
+            <td>陕西省西安市雁塔区丈八沟街道天谷八路与云水一路交汇处环普产业园E座食堂门口</td>
+            <td>待发货</td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                 发货</button></td>
+                 <form action="" method="post">
+                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Transform List</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h5>Please fill in tracking number</h5>
+                          <input type="text" style="width: 300px">
+                          <hr>
+                          <h5>Please select express company</h5>
+                          <select>
+                            <option>中通快递</option>
+                            <option>韵达快递</option>
+                            <option>圆通快递</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+          </tr>
+          <tr>
+            <th scope="row">002</th>
+            <td>林立</td>
+            <td>18591919101</td>
+            <td>陕西省西安市雁塔区丈八沟街道天谷八路211号西安环普科技产业园C座</td>
+            <td>待发货</td>
+            <td><button type="button" class="btn btn-primary">发货</button></td>
+          </tr>
+          <tr>
+            <th scope="row">003</th>
+            <td>王俐力</td>
+            <td>18091185557</td>
+            <td>陕西省西安市灞桥区席王街道天御锦城三期三号楼一单元1102室</td>
+            <td>待发货</td>
+            <td><button type="button" class="btn btn-primary">发货</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
   <script src="/scripts/management/orderList.js"></script>
 </body>
 </html>
