@@ -13,54 +13,34 @@
 </head>
 <body>
   <div id="myWebsite">
-    <div id="border">
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <img src="/assets/mydog.jpg"/> 
-        <div id="content">狗狗红包小狗唐装喜庆过年泰迪博美拜年衣服秋冬装冬季比熊小型犬</div>
-        <div id="price">￥45.00</div>
-        数量：<input type="number" id="quantity"/>
-      </div>
+    <div class="prodictSection">
+
     </div>
-    <div id="border">
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <img src="/assets/狗子的春天.jpg"/> 
-        <div id="content">可爱狗狗衣服背带裤四脚衣泰迪比熊博美小型犬秋冬装柔软加厚保暖</div>
-        <div id="price">￥33.00</div>
-        数量：<input type="number" id="quantity"/>
-      </div>
-    </div>
-    <div id="border">
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <img src="/assets/phone.jpg"/> 
-        <div id="content">ins新年潮牌一夜暴富腕带支架 苹果X手机壳iPhone xs max女6p</div>
-        <div id="price">￥25.00</div>
-        数量：<input type="number" id="quantity"/>
-      </div>
-    </div>
+
     <textarea cols="110" rows="5">
       买家留言：
     </textarea>
     <div class="userborder">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <span>王俐力</span>
-            <span>陕西省西安市雁塔区丈八沟街道天谷八路与云水一路交汇处环普产业园E座食堂门口</span>
-            <span>13201575828</span>
+            <input type="hidden" data-id="id"/>
+            <span id="name">王俐力</span>
+            <span id="address">陕西省西安市雁塔区丈八沟街道天谷八路与云水一路交汇处环普产业园E座食堂门口</span>
+            <span id="phone">13201575828</span>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <span>林立</span>
-        <span>陕西省西安市雁塔区丈八沟街道天谷八路211号西安环普科技产业园C座</span>
-        <span>18591919101</span>
+        <input type="hidden" data-id="id"/>
+        <span id="name">林立</span>
+        <span id="address">陕西省西安市雁塔区丈八沟街道天谷八路211号西安环普科技产业园C座</span>
+        <span id="phone">18591919101</span>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <span>王俐力</span>
-        <span>陕西省西安市灞桥区席王街道天御锦城三期三号楼一单元1102室</span>
-        <span>18091185557</span>
+        <input type="hidden" data-id="id"/>
+        <span id="name">王俐力</span>
+        <span id="address">陕西省西安市灞桥区席王街道天御锦城三期三号楼一单元1102室</span>
+        <span id="phone">18091185557</span>
       </div>
     </div>
     <div class="payMoney">
@@ -69,6 +49,20 @@
     <input type="button" id="button" value="结 算"/>
     </div>
   </div>
+  <script type="text/html" id="template">
+    {{#productList}}
+    <div id="border">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="hidden" data-id="{{itemNumber}}"/>
+          <img src="{{itemPic}}"/> 
+          <div id="content">{{itemName}}</div>
+          <div id="price">{{itemPrice}}</div>
+          数量：<input type="number" id="quantity" value="1"/>
+        </div>
+      </div>
+      {{/productList}}
+  </script>
   <script src="/scripts/website/submitOrder.js"></script>
 </body>
 </html>
