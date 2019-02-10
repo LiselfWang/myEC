@@ -5,7 +5,7 @@
 }
 
 #border{
-    width: 800px;
+    width: 900px;
     height: 150px;
     padding: 20px;
     border: silver 1px dashed;
@@ -35,7 +35,7 @@ img{
 
 .payMoney{
     margin: 0 auto;
-    width: 800px;
+    width: 900px;
     text-align: right;
     height: 50px;
     background-color:silver
@@ -53,11 +53,31 @@ img{
     border:silver 1px solid;
     text-align: left;
     margin: 10px auto;
-    width: 800px;
+    width: 900px;
 }
 
 textarea{
-    width: 800px;
+    width: 900px;
     font-size: 14px;
     color: silver;
+}
+
+#price{
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+    margin: 10px;
+}
+
+#content{
+    width: 500px;
+    text-align:left;
+    display: inline-block;
+    height: 250;
+}
+
+#quantity{
+    width: 50px;
+    margin: 10px;
+    height: 30px;
 }
