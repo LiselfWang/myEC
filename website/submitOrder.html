@@ -10,6 +10,7 @@
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/scripts/common.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/node_modules/mustache/mustache.min.js"></script>
 
 </head>
 <body>
@@ -46,7 +47,7 @@
     </div>
     <div class="payMoney">
     <span id="pay">合计：</span>
-    <span id="money">￥500.00</span>
+    <span id="money">￥0.00</span>
     <input type="button" id="button" value="结 算"/>
     </div>
   </div>
@@ -54,12 +55,12 @@
     {{#productList}}
     <div id="border">
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" class="check">
           <input type="hidden" data-id="{{itemNumber}}"/>
-          <img src="{{itemPic}}"/> 
-          <div id="content">{{itemName}}</div>
-          <div id="price">{{itemPrice}}</div>
-          数量：<input type="number" id="quantity" value="1"/>
+          <img class="image" src="{{itemPic}}"/> 
+          <div class="content">{{itemName}}</div>
+          <div class="price">{{itemPrice}}</div>
+          数量：<input type="number" class="quantity" value="1"/>
         </div>
       </div>
       {{/productList}}

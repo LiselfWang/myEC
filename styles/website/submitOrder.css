@@ -62,21 +62,21 @@ textarea{
     color: silver;
 }
 
-#price{
+.price{
     width: 80px;
     text-align: right;
     display: inline-block;
     margin: 10px;
 }
 
-#content{
-    width: 500px;
+.content{
+    width: 450px;
     text-align:left;
     display: inline-block;
     height: 250;
 }
 
-#quantity{
+.quantity{
     width: 50px;
     margin: 10px;
     height: 30px;
