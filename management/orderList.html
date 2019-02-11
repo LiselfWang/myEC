@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="/styles/management/orderList.css">
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/common.js"></script>
+  <script src="/node_modules/mustache/mustache.min.js"></script>
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -45,10 +47,8 @@
                         </div>
                         <div class="modal-body">
                           <h5>Please select express company</h5>
-                          <select>
-                            <option>中通快递</option>
-                            <option>韵达快递</option>
-                            <option>圆通快递</option>
+                          <select class="select">
+                            
                           </select>
                           <hr>
                           <h5>Please fill in tracking number</h5>
@@ -108,6 +108,11 @@
         </tbody>
       </table>
     </fieldset>
+  <script type="text/html" id="shippingTemplate">
+    {{#shippingList}}
+      <option data-id="{{id}}">{{name}}</option>
+    {{/shippingList}}
+  </script>
   <script src="/scripts/management/orderList.js"></script>
 </body>
 </html>
