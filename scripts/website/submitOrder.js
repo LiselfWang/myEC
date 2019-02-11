@@ -13,14 +13,7 @@ $(function(){
                 var realData = Mustache.render(templateData,{"productList":data});
                 $(".prodictSection").html(realData);
 
-                for(var i=0;i<data.length;i++){
-                    $(".check").eq(i).change(function(){
-                        sumUp();
-                    })
-                    $(".quantity").eq(i).change(function(){
-                        sumUp();
-                    })
-                }
+                $(".check,.quantity").change(sumUp);
  
                 function sumUp(){
                     var money = 0;
@@ -28,9 +21,9 @@ $(function(){
                         var number = parseInt($(".quantity").eq(i).val());
                       if($(".check").eq(i).prop("checked")&&(number>=1)) {
                         money += (data[i].itemPrice)*number;
-                        $("#money").html(money);
                       }
                     }
+                    $("#money").html(money);  
                 }
             }
         })
@@ -46,5 +39,9 @@ $(function(){
                 $(".userborder").html(realAddress);
             }
         })
-    }    
+    }
+    
+    $("#button").click(function(){
+        
+    })
 })

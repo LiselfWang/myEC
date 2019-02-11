@@ -6,7 +6,7 @@ node('Siteo') {
         sh 'npm i'
     }
     stage('Release'){
-      sh 'aws s3 rm s3://my-ec/ --recursive'
-      sh 'aws s3 cp . s3://my-ec/ --recursive'
+      sh 'aws s3 rm s3://my-ec.siteo.com.cn/ --recursive'
+      sh 'aws s3 cp . s3://my-ec.siteo.com.cn/ --recursive'
     }
 }

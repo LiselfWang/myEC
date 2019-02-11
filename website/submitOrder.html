@@ -50,7 +50,7 @@
     <script type="text/html" id="addressTemplate">
       {{#adderssList}}
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="address" id="defaultCheck1">
+          <input class="form-check-input" type="radio" name="address" id="defaultCheck1" {{#isDefault}}checked{{/isDefault}} >
             <input type="hidden" data-id="{{id}}"/>
             <span class="name">{{contactName}}</span>
             <span class="address">{{address}}</span>
