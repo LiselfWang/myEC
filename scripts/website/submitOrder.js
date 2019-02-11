@@ -35,6 +35,16 @@ $(function(){
             }
         })
     }
-       
-       
+    getAddress();
+    function getAddress(){
+        myAjax("/api/front/address", {
+            dataType: "json",
+            type:"get",
+            success:function(data){
+                var templateAddress = $("#addressTemplate").html();
+                var realAddress = Mustache.render(templateAddress,{"adderssList":data});
+                $(".userborder").html(realAddress);
+            }
+        })
+    }    
 })

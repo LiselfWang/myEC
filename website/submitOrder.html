@@ -24,27 +24,7 @@
       买家留言：
     </textarea>
     <div class="userborder">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <input type="hidden" data-id="id"/>
-            <span id="name">王俐力</span>
-            <span id="address">陕西省西安市雁塔区丈八沟街道天谷八路与云水一路交汇处环普产业园E座食堂门口</span>
-            <span id="phone">13201575828</span>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <input type="hidden" data-id="id"/>
-        <span id="name">林立</span>
-        <span id="address">陕西省西安市雁塔区丈八沟街道天谷八路211号西安环普科技产业园C座</span>
-        <span id="phone">18591919101</span>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <input type="hidden" data-id="id"/>
-        <span id="name">王俐力</span>
-        <span id="address">陕西省西安市灞桥区席王街道天御锦城三期三号楼一单元1102室</span>
-        <span id="phone">18091185557</span>
-      </div>
+    
     </div>
     <div class="payMoney">
     <span id="pay">合计：</span>
@@ -66,6 +46,17 @@
         </div>
       </div>
       {{/productList}}
+    </script>
+    <script type="text/html" id="addressTemplate">
+      {{#adderssList}}
+        <div class="form-check">
+          <input class="form-check-input" type="radio" value="" id="defaultCheck1">
+            <input type="hidden" data-id="{{id}}"/>
+            <span class="name">{{contactName}}</span>
+            <span class="address">{{address}}</span>
+            <span class="phone">{{contactPhone}}</span>
+        </div>
+      {{/adderssList}}
   </script>
   <script src="/scripts/website/submitOrder.js"></script>
 </body>
