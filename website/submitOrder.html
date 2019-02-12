@@ -20,9 +20,9 @@
 
     </div>
 
-    <textarea cols="110" rows="5">
-    买家留言：
-    </textarea>
+    <div class="title">买家留言：</div>
+    <textarea rows="6" id="message"></textarea>
+    
     <div class="userborder">
     
     </div>
@@ -35,10 +35,9 @@
   </div>
   <script type="text/html" id="template">
     {{#productList}}
-    <div id="border">
+    <div class="border item-line">
         <div class="form-group form-check">
-          <input type="checkbox" class="check">
-          <input type="hidden" data-id="{{itemNumber}}"/>
+          <input type="checkbox" class="check" name="item" value="{{itemNumber}}">
           <img class="image" src="{{itemPic}}"/> 
           <div class="content">{{itemName}}</div>
           <div class="price">{{itemPrice}}</div>
@@ -49,12 +48,11 @@
     </script>
     <script type="text/html" id="addressTemplate">
       {{#adderssList}}
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="address" id="defaultCheck1" {{#isDefault}}checked{{/isDefault}} >
-            <input type="hidden" data-id="{{id}}"/>
-            <span class="name">{{contactName}}</span>
-            <span class="address">{{address}}</span>
-            <span class="phone">{{contactPhone}}</span>
+        <div class="form-group form-check">
+          <input class="form-check-input" value="{{id}}" type="radio" name="address" {{#isDefault}}checked{{/isDefault}} >
+          <span class="name">{{contactName}}</span>
+          <span class="address">{{address}}</span>
+          <span class="phone">{{contactPhone}}</span>
         </div>
       {{/adderssList}}
   </script>

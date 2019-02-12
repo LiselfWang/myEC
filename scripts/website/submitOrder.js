@@ -16,13 +16,13 @@ $(function(){
                 $(".check,.quantity").change(sumUp);
  
                 function sumUp(){
+
                     var money = 0;
-                    for(var i=0;i<data.length;i++){
-                        var number = parseInt($(".quantity").eq(i).val());
-                      if($(".check").eq(i).prop("checked")&&(number>=1)) {
+
+                    getBoughtItems(function(i, itemNumber, number){
                         money += (data[i].itemPrice)*number;
-                      }
-                    }
+                    });
+
                     $("#money").html(money);  
                 }
             }
@@ -40,8 +40,35 @@ $(function(){
             }
         })
     }
+
+    function getBoughtItems(callback){
+        $(".item-line").each(function(i){
+            var check = $(this).find(".check");
+            var number = parseInt($(this).find(".quantity").val());
+            if(check.prop("checked") && number >=1){
+                callback && callback(i, check.val(), number);
+            }
+        });
+    }
+
     
     $("#button").click(function(){
-        
+        var items = [];
+
+        getBoughtItems(function(i, itemNumber, number){
+            items.push({
+                "itemNumber": itemNumber, 
+                "quantity": number
+            });
+        });
+
+        var message = $("#message").val();
+        var addressId = $("[name='address']:checked").val();
+        console.log({
+            items:items,
+            message:message,
+            addressId:addressId
+        })
+        return false;
     })
 })

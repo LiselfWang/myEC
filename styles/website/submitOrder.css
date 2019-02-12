@@ -4,7 +4,7 @@
     width: 1440px;
 }
 
-#border{
+.border{
     width: 900px;
     height: 150px;
     padding: 20px;
@@ -56,16 +56,23 @@ img{
     width: 900px;
 }
 
-textarea:first-line{ 
+.title{ 
+    margin: 0px auto;
     font-size: 14px;
-    color:silver
+    color:silver;
+    width:900px;
+    height: 25px;
+    text-align: left;
 }
 
-textarea{
+#message{
     width: 900px;
     color:black;
     font-size: 16px;
+    padding: 10px;
+    text-align: left;
 }
+
 
 .price{
     width: 80px;
