@@ -16,14 +16,11 @@ $(function(){
                 $(".check,.quantity").change(sumUp);
  
                 function sumUp(){
-
                     var money = 0;
-
-                    getBoughtItems(function(i, itemNumber, number){
+                    getBoughtItems(function(i,itemNumber,number){
                         money += (data[i].itemPrice)*number;
-                    });
-
-                    $("#money").html(money);  
+                        $("#money").html(money);
+                    })
                 }
             }
         })
@@ -45,30 +42,44 @@ $(function(){
         $(".item-line").each(function(i){
             var check = $(this).find(".check");
             var number = parseInt($(this).find(".quantity").val());
-            if(check.prop("checked") && number >=1){
-                callback && callback(i, check.val(), number);
+            if(check.prop("checked")&&number>=1){
+                callback&&callback(i,check.val(),number);
             }
-        });
+        })
     }
 
-    
+
     $("#button").click(function(){
-        var items = [];
-
-        getBoughtItems(function(i, itemNumber, number){
+        items=[];
+        getBoughtItems(function(i,itemNumber,number){
             items.push({
-                "itemNumber": itemNumber, 
-                "quantity": number
-            });
-        });
-
-        var message = $("#message").val();
+                itemNumber:itemNumber,
+                quantity:number
+            })
+        })
+        var message = $("textarea").val();
         var addressId = $("[name='address']:checked").val();
         console.log({
             items:items,
             message:message,
             addressId:addressId
         })
-        return false;
+        
+        myAjax("api/front/order",
+        {
+            dataType: "json",
+            type:"post",
+            headers:{'Content-Type':'application/json'},
+            data:{
+                "addressId":addressId,
+                "message":message,
+                "items":items
+            },
+            success:function(data){
+                alert("您的订单号已生成："+data.orderNumber);
+            }
+        }
+        )
     })
+
 })

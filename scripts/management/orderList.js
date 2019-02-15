@@ -12,6 +12,28 @@ $(function(){
         })
     }
 
+    getOrderList();
+    function getOrderList(){
+        
+    }
 
+    $("[name='delivery']").click(function(){
+        $(".modal-content,.modal-backdrop").hide();
+        if($(".shippingNumber").change()){
+            if($(".shippingNumber").val()!=""){
+                $("td.status").text("已发货");
+            }else if($(".shippingNumber").val()==""){
+                $("td.status").text("未发货");
+            }
+        }
+    })
+
+    $(".send").click(function(){
+        $(".modal-content,.modal-backdrop").show();
+    })
+
+    $(".check").click(function(){
+        $(".modal-content,.modal-backdrop").show();
+    })
 
 })
