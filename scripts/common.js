@@ -29,3 +29,18 @@ function myAjax(url, settings){
 
     $.ajax(appendApiUrl(url),settings);
 }
+
+
+function myOrderAjax(url, settings){
+    if(settings) {
+        if(settings.headers){
+            settings.headers.token = "admin";
+        }else{
+            settings.headers = {
+                token: "admin"
+            };
+        }
+    }
+
+    $.ajax(appendApiUrl(url),settings);
+}

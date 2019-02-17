@@ -1,7 +1,8 @@
 $(function(){
+    var shippingOrderNumber;
     getShippingList();
     function getShippingList(){
-        myAjax("api/backend/shipping",{
+        myOrderAjax("api/backend/shipping",{
             dataType: "json",
             type:"get",
             success:function(data){
@@ -14,7 +15,7 @@ $(function(){
 
     getOrderList();
     function getOrderList(){
-        myAjax("/api/backend/order", {
+        myOrderAjax("/api/backend/order", {
             dataType: "json",
             type:"get",
             success:function(data){
@@ -22,6 +23,7 @@ $(function(){
                 var realData = Mustache.render(templateData,{"orderList":data});
                 $(".orderSection").html(realData);
                 $(".send").click(function(){
+                    shippingOrderNumber = $(this).data('order-number');
                     $("#shippingModal").modal();
                 });
 
@@ -33,7 +35,21 @@ $(function(){
     }
 
      $("[name='delivery']").click(function(){
-         // todo ajax
+         var shippingId = $(".select").find("option:selected").data("id");
+         var shippimgNumber = $(".shippingNumber").val();
+         myOrderAjax("/api/backend/order/shipping",{
+            dataType: "json",
+            headers:{'Content-Type':'application/json'},
+            type:"put", 
+            data:JSON.stringify({
+                "orderNumber":shippingOrderNumber,
+                "shippingId":shippingId,
+                "shippingNumber":shippimgNumber
+            }),
+            success:function(data){
+                getOrderList();
+            }
+         })
          $("#shippingModal").modal('hide');
      });
 
@@ -42,8 +58,8 @@ $(function(){
      })
 
      $(".orderSection").on("click",".check",function(){
-         var id = $(this).data("id");
-         myAjax("/api/backend/order/orderItem/"+id,{
+         var id = $(this).data("order-number");
+         myOrderAjax("/api/backend/order/orderItem/"+id,{
          dataType: "json",
          type:"get",
          success:function(data){
