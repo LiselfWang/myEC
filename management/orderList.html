@@ -19,9 +19,9 @@
         <thead>
           <tr>
             <th scope="col">Order Number</th>
-            <th scope="col">User Name</th>
-            <th scope="col">User Phone</th>
-            <th scope="col">User Address</th>
+            <th scope="col">Rec Name</th>
+            <th scope="col">Rec Phone</th>
+            <th scope="col">Address</th>
             <th scope="col">Total Amount</th>
             <th scope="col">Message</th>
             <th scope="col">Order Status</th>
@@ -29,77 +29,77 @@
           </tr>
         </thead>
         <tbody class="orderSection">
-          
-                 <form action="" method="post">
-                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Transform List</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <h5>Please select express company</h5>
-                          <select class="select">
-                            
-                          </select>
-                          <hr>
-                          <h5>Please fill in tracking number</h5>
-                          <input type="text" class="shippingNumber" style="width: 300px">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                          <button type="button" class="btn btn-primary" name="delivery">Submit</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-          
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Product List</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <ul class="itemCheck">
-                           
-                          </ul>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
         </tbody>
       </table>
     </fieldset>
+
+    <form action="" method="post">
+      <div class="modal fade" id="shippingModal" tabindex="-1" role="dialog" aria-labelledby="shippingModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ship">
+              <div class="modal-header">
+                <h5 class="modal-title" id="shippingModalTitle">Transform List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h5>Please select express company</h5>
+                <select class="select">
+                  
+                </select>
+                <hr>
+                <h5>Please fill in tracking number</h5>
+                <input type="text" class="shippingNumber" style="width: 300px">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" name="delivery">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal fade" id="orderItemModal" tabindex="-1" role="dialog" aria-labelledby="orderItemModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content product">
+              <div class="modal-header">
+                <h5 class="modal-title" id="orderItemModalTitle">Product List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul class="itemCheck">
+                
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
   <script type="text/html" id="shippingTemplate">
     {{#shippingList}}
       <option data-id="{{id}}">{{shippingName}}</option>
     {{/shippingList}}
   </script>
-  <script src="/scripts/management/orderList.js"></script>
-
+  
   <script type="text/html" id="orderTemplate">
     {{#orderList}}
-      <tr>
+      <tr class="orderLine">
         <th scope="row">{{orderNumber}}</th>
         <td>{{contactName}}</td>
         <td>{{contactPhone}}</td>
         <td>{{address}}</td>
         <td>{{totalAmount}}</td>
         <td>{{message}}</td>
-        <td class="status">待发货</td>
-        <td><button type="button" class="btn btn-primary send" data-toggle="modal" data-target="#exampleModalCenter" data-id={{orderNumber}}>发货</button></td>
-        <td><button type="button" class="btn btn-primary check" data-toggle="modal" data-target="#exampleModal" data-id={{orderNumber}}>查看商品</button></td>
+        <td class="status">{{orderStatus}}</td>
+        <td><button type="button" class="btn btn-primary send" data-toggle="modal" data-id={{orderNumber}}>发货</button></td>
+        <td><button type="button" class="btn btn-primary check" data-toggle="modal" data-id={{orderNumber}}>查看商品</button></td>
       </tr>
     {{/orderList}}
   </script>
@@ -107,11 +107,13 @@
   <script type="text/html" id="itemTemplate">
     {{#itemCheck}}
       <li>
-        <span>#2598545</span>
-        <span>狗狗红包小狗唐装喜庆过年泰迪博美拜年衣服秋冬装冬季比熊小型犬</span>
-        <span>数量1</span>
+        <span>{{itemNumber}}</span>
+        <span>{{itemName}}</span>
+        <span>数量:{{quantity}}</span>
       </li>
     {{/itemCheck}}
   </script>
+  <script src="/scripts/management/orderList.js"></script>
+
 </body>
 </html>

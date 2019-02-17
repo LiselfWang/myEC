@@ -70,16 +70,19 @@ $(function(){
             dataType: "json",
             type:"post",
             headers:{'Content-Type':'application/json'},
-            data:{
+            data:JSON.stringify({
                 "addressId":addressId,
                 "message":message,
                 "items":items
-            },
+            }),
             success:function(data){
                 alert("您的订单号已生成："+data.orderNumber);
+                window.location.href="http://127.0.0.1:5500/website/submitOrder.html"
             }
         }
         )
+
+
     })
 
 })
