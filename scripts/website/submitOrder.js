@@ -12,19 +12,19 @@ $(function(){
 
                 var realData = Mustache.render(templateData,{"productList":data});
                 $(".prodictSection").html(realData);
-
-                $(".check,.quantity").change(sumUp);
- 
-                function sumUp(){
-                    var money = 0;
-                    getBoughtItems(function(i,itemNumber,number){
-                        money += (data[i].itemPrice)*number;
-                        $("#money").html(money);
-                    })
-                }
             }
         })
     }
+
+    $(".prodictSection").on("change",".check,.quantity",function(){
+        var money = 0;
+        getBoughtItems(function(i,itemNumber,number){
+            money += ($(".price").eq(i).html())*number;
+        })
+
+        $("#money").html(money);
+    })
+
     getAddress();
     function getAddress(){
         myAjax("/api/front/address", {
@@ -77,7 +77,7 @@ $(function(){
             }),
             success:function(data){
                 alert("您的订单号已生成："+data.orderNumber);
-                window.location.href="http://127.0.0.1:5500/website/submitOrder.html"
+                window.location.href="./submitOrder.html"
             }
         }
         )

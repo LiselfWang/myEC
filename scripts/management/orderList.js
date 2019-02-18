@@ -1,6 +1,9 @@
 $(function(){
-    var shippingOrderNumber;
+    
     getShippingList();
+    getOrderList();
+    
+    var shippingOrderNumber;
     function getShippingList(){
         myOrderAjax("api/backend/shipping",{
             dataType: "json",
@@ -13,7 +16,6 @@ $(function(){
         })
     }
 
-    getOrderList();
     function getOrderList(){
         myOrderAjax("/api/backend/order", {
             dataType: "json",
@@ -22,20 +24,12 @@ $(function(){
                 var templateData = $("#orderTemplate").html();
                 var realData = Mustache.render(templateData,{"orderList":data});
                 $(".orderSection").html(realData);
-                $(".send").click(function(){
-                    shippingOrderNumber = $(this).data('order-number');
-                    $("#shippingModal").modal();
-                });
-
-                $(".check").click(function(){
-                    $("#orderItemModal").modal();
-                });
             }
         })
     }
 
      $("[name='delivery']").click(function(){
-         var shippingId = $(".select").find("option:selected").data("id");
+         var shippingId = $(".select").val();
          var shippimgNumber = $(".shippingNumber").val();
          myOrderAjax("/api/backend/order/shipping",{
             dataType: "json",
@@ -68,5 +62,15 @@ $(function(){
             $(".itemCheck").html(realDetail);
             }
         })
-     })
+     });
+
+     $(".orderSection").on("click", ".send", function(){
+        shippingOrderNumber = $(this).data('order-number');
+        $("#shippingModal").modal();
+    });
+
+    $(".orderSection").on("click", ".check", function(){
+        $("#orderItemModal").modal();
+    });
+
 });
