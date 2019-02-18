@@ -16,15 +16,6 @@ $(function(){
         })
     }
 
-    $(".prodictSection").on("change",".check,.quantity",function(){
-        var money = 0;
-        getBoughtItems(function(i,itemNumber,number){
-            money += ($(".price").eq(i).html())*number;
-        })
-
-        $("#money").html(money);
-    })
-
     getAddress();
     function getAddress(){
         myAjax("/api/front/address", {
@@ -48,6 +39,14 @@ $(function(){
         })
     }
 
+    $(".prodictSection").on("change",".check,.quantity",function(){
+        var money = 0;
+        getBoughtItems(function(i,itemNumber,number){
+            money += ($(".price").eq(i).html())*number;
+        })
+
+        $("#money").html("￥"+money);
+    })
 
     $("#button").click(function(){
         items=[];

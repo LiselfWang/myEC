@@ -2,7 +2,7 @@ $(function(){
     
     getShippingList();
     getOrderList();
-    
+
     var shippingOrderNumber;
     function getShippingList(){
         myOrderAjax("api/backend/shipping",{
@@ -52,6 +52,7 @@ $(function(){
      })
 
      $(".orderSection").on("click",".check",function(){
+         $("#orderItemModal").modal();
          var id = $(this).data("order-number");
          myOrderAjax("/api/backend/order/orderItem/"+id,{
          dataType: "json",
@@ -67,10 +68,6 @@ $(function(){
      $(".orderSection").on("click", ".send", function(){
         shippingOrderNumber = $(this).data('order-number');
         $("#shippingModal").modal();
-    });
-
-    $(".orderSection").on("click", ".check", function(){
-        $("#orderItemModal").modal();
     });
 
 });
